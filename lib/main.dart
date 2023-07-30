@@ -53,7 +53,7 @@ class MyExperience extends StatelessWidget {
     if (DateTime.now().second.isEven) {
       home = MyImageAssetWidget();
     } else {
-      home = MyHomePage(title: APP_TITLE);
+      home = MyCounterPage(title: APP_TITLE);
     }
 
     return MaterialApp(
@@ -67,7 +67,7 @@ class MyExperience extends StatelessWidget {
 
       home: home,
       //home: const MyImageAssetWidget(),
-      //home: const MyHomePage(title: APP_TITLE),
+      //home: const MyCounterPage(title: APP_TITLE),
 
       debugShowCheckedModeBanner: false,
     );
@@ -78,8 +78,8 @@ class MyExperience extends StatelessWidget {
 
 /// The flutter default counter demo.
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class MyCounterPage extends StatefulWidget {
+  const MyCounterPage({super.key, required this.title});
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -93,10 +93,10 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<MyCounterPage> createState() => _MyCounterPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyCounterPageState extends State<MyCounterPage> {
   int _counter = 0;
 
   void _incrementCounter() {
@@ -124,7 +124,7 @@ class _MyHomePageState extends State<MyHomePage> {
         // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
         // change color while the other colors stay the same.
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
+        // Here we take the value from the MyCounterPage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
