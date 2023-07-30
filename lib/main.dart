@@ -45,6 +45,17 @@ class MyExperience extends StatelessWidget {
       setWindowTitle(APP_WINDOW_TITLE);
     }
 
+    // TODO The home page will be a grid of buttons to select the different
+    // experiments. For now randomly select an experiment to display.
+
+    final home;
+
+    if (DateTime.now().second.isEven) {
+      home = MyImageAssetWidget();
+    } else {
+      home = MyHomePage(title: APP_TITLE);
+    }
+
     return MaterialApp(
       title: 'MyExperience',
       theme: ThemeData(
@@ -54,11 +65,9 @@ class MyExperience extends StatelessWidget {
         useMaterial3: true,
       ),
 
-      // TODO The home page will be a grid of buttons to select the different
-      // experiments.
-
+      home: home,
       //home: const MyImageAssetWidget(),
-      home: const MyHomePage(title: APP_TITLE),
+      //home: const MyHomePage(title: APP_TITLE),
 
       debugShowCheckedModeBanner: false,
     );
