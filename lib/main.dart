@@ -22,16 +22,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart'; // defaultTargetPlatform
 import 'package:window_size/window_size.dart'; // setWindowTitle()
 
-/// The entry point to the app.
+/// The main() entry point.
 
 void main() {
-  runApp(const Learner());
+  runApp(const MyExperience());
 }
 
 /// An app to demonstrate the functionality of flutter.
 
-class Learner extends StatelessWidget {
-  const Learner({super.key});
+class MyExperience extends StatelessWidget {
+  const MyExperience({super.key});
 
   // This widget is the root of your application.
 
@@ -42,11 +42,11 @@ class Learner extends StatelessWidget {
     if (defaultTargetPlatform == TargetPlatform.linux ||
         defaultTargetPlatform == TargetPlatform.macOS ||
         defaultTargetPlatform == TargetPlatform.windows) {
-      setWindowTitle(APP_TITLE);
+      setWindowTitle(APP_WINDOW_TITLE);
     }
 
     return MaterialApp(
-      title: 'Learner',
+      title: 'MyExperience',
       theme: ThemeData(
         // Theme for the application.
 
@@ -58,7 +58,7 @@ class Learner extends StatelessWidget {
       // experiments.
 
       //home: const MyImageAssetWidget(),
-      home: const MyHomePage(title: 'Learning Flutter Through Experience'),
+      home: const MyHomePage(title: APP_TITLE),
 
       debugShowCheckedModeBanner: false,
     );
