@@ -18,4 +18,8 @@
 
 /// The application title as displayed in the desktop window title.
 
-const String APP_TITLE = 'The Flutter Experience';
+const String APP_WINDOW_TITLE = 'The Flutter Experience';
+
+/// The application title as used on the grid menu page.
+
+const String APP_TITLE = 'Learning Flutter Through Experience';
