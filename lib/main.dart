@@ -33,7 +33,7 @@ void main() {
 class MyExperienceApp extends StatelessWidget {
   const MyExperienceApp({super.key});
 
-  // This widget is the root of your application.
+  // This widget is the root of the application.
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +54,7 @@ class MyExperienceApp extends StatelessWidget {
 
     final home = switch (choice) {
       0 => MyTextWidget(title: APP_TITLE),
-      1 => MyImageAssetWidget(),
+      1 => MyImageAssetWidget(image: APP_IMAGE),
       _ => MyCounterPage(title: APP_TITLE)
     };
 
@@ -72,7 +72,7 @@ class MyExperienceApp extends StatelessWidget {
   }
 }
 
-// TODO into it's own file and a button in the home page grid to select it.
+// TODO move into it's own file and a button in the home page grid to select it.
 
 /// Demonstrate a single widget containing text.
 
@@ -91,22 +91,24 @@ class MyTextWidget extends StatelessWidget {
   }
 }
 
-// TODO into it's own file and a button in the home page grid to select it.
+// TODO move into it's own file and a button in the home page grid to select it.
 
 /// Demonstrate a single widget containing an image.
 
 class MyImageAssetWidget extends StatelessWidget {
-  const MyImageAssetWidget({Key? key}) : super(key: key);
+  const MyImageAssetWidget({super.key, required this.image});
+
+  final String image;
 
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Image.asset('assets/images/FrontPanel.png'),
+      child: Image.asset(image),
     );
   }
 }
 
-// TODO into it's own file and a button in the home page grid to select it.
+// TODO move into it's own file and a button in the home page grid to select it.
 
 /// The flutter default counter demo page.
 

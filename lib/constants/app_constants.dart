@@ -23,3 +23,7 @@ const String APP_WINDOW_TITLE = 'The Flutter Experience';
 /// The application title as used on the grid menu page.
 
 const String APP_TITLE = 'Learning Flutter Through Experience';
+
+/// A sample image to display.
+
+const String APP_IMAGE = 'assets/images/FrontPanel.png';
