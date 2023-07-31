@@ -39,9 +39,13 @@ class MyExperienceApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // Set the window title for the desktop apps approriately.
 
-    if (defaultTargetPlatform == TargetPlatform.linux ||
-        defaultTargetPlatform == TargetPlatform.macOS ||
-        defaultTargetPlatform == TargetPlatform.windows) {
+    const desktop = [
+      TargetPlatform.linux,
+      TargetPlatform.macOS,
+      TargetPlatform.windows
+    ];
+
+    if (desktop.contains(defaultTargetPlatform)) {
       setWindowTitle(APP_WINDOW_TITLE);
     }
 
