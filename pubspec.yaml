@@ -22,14 +22,15 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 0.0.0+1
 
 environment:
-  sdk: '>=3.0.6 <4.0.0'
+  sdk: ">=3.0.6 <4.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
 # consider running `flutter pub upgrade --major-versions`. Alternatively,
 # dependencies can be manually updated by changing the version numbers below to
 # the latest version available on pub.dev. To see which dependencies have newer
-# versions available, run `flutter pub outdated`.
+# versions available, run `flutter pub outdated`. Documentation is available
+# https://dart.dev/tools/pub/dependencies#traditional-syntax
 
 dependencies:
   flutter:
@@ -42,7 +43,7 @@ dependencies:
 
   # Add Google fonts package.
 
-  google_fonts: any
+  # google_fonts: >=5.1.0
 
   # Use window_size to change the desktop window title. This is not on
   # https://pub.dev so get it from the git repo. See
