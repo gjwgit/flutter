@@ -25,13 +25,13 @@ import 'package:window_size/window_size.dart'; // setWindowTitle()
 /// The main() entry point.
 
 void main() {
-  runApp(const MyExperience());
+  runApp(const MyExperienceApp());
 }
 
 /// An app to demonstrate the functionality of flutter.
 
-class MyExperience extends StatelessWidget {
-  const MyExperience({super.key});
+class MyExperienceApp extends StatelessWidget {
+  const MyExperienceApp({super.key});
 
   // This widget is the root of your application.
 
@@ -48,27 +48,25 @@ class MyExperience extends StatelessWidget {
     // TODO The home page will be a grid of buttons to select the different
     // experiments. For now randomly select an experiment to display.
 
-    final home;
+    final choice = DateTime.now().millisecond % 10;
 
-    if (DateTime.now().second.isEven) {
-      home = MyImageAssetWidget();
-    } else {
-      home = MyCounterPage(title: APP_TITLE);
-    }
+    print(choice);
+
+    final home = switch (choice) {
+      0 => MyTextWidget(title: APP_TITLE),
+      1 => MyImageAssetWidget(),
+      _ => MyCounterPage(title: APP_TITLE)
+    };
 
     return MaterialApp(
-      title: 'MyExperience',
+      title: 'MyExperienceApp',
       theme: ThemeData(
         // Theme for the application.
 
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-
       home: home,
-      //home: const MyImageAssetWidget(),
-      //home: const MyCounterPage(title: APP_TITLE),
-
       debugShowCheckedModeBanner: false,
     );
   }
@@ -76,17 +74,51 @@ class MyExperience extends StatelessWidget {
 
 // TODO into it's own file and a button in the home page grid to select it.
 
-/// The flutter default counter demo.
+/// Demonstrate a single widget containing text.
+
+class MyTextWidget extends StatelessWidget {
+  const MyTextWidget({super.key, required this.title});
+
+  // Make `title` an instance field of this class.
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text(title),
+    );
+  }
+}
+
+// TODO into it's own file and a button in the home page grid to select it.
+
+/// Demonstrate a single widget containing an image.
+
+class MyImageAssetWidget extends StatelessWidget {
+  const MyImageAssetWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Image.asset('assets/images/FrontPanel.png'),
+    );
+  }
+}
+
+// TODO into it's own file and a button in the home page grid to select it.
+
+/// The flutter default counter demo page.
 
 class MyCounterPage extends StatefulWidget {
   const MyCounterPage({super.key, required this.title});
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
+  // This widget is a sample home page for and application. It is stateful,
+  // meaning that it has a State object (defined below as [_MyCounterPageState])
+  // that contains fields that affect how it looks.
 
   // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
+  // case the title) provided by the parent (in this case the App widget) and is
   // used by the build method of the State. Fields in a Widget subclass are
   // always marked "final".
 
@@ -162,20 +194,6 @@ class _MyCounterPageState extends State<MyCounterPage> {
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
-  }
-}
-
-// TODO into it's own file and a button in the home page grid to select it.
-
-/// Demonstrate a single page widget containing an image.
-
-class MyImageAssetWidget extends StatelessWidget {
-  const MyImageAssetWidget({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Image.asset('assets/images/FrontPanel.png'),
     );
   }
 }
