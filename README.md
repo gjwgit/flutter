@@ -4,8 +4,8 @@ A Flutter project that started out as `flutter create flutter` and
 becoming a playground for exploring flutter widgets.
 
 Some initial examples come from the Flutter and Dart Cookbook by
-Richard Rose though they predate flutter 3.0.0 and needed quite a bit
-of updating.
+Richard Rose though flutter and dart have progressed since this book
+and many examples need updating.
 
 ## Useful Resources
 
