@@ -33,7 +33,7 @@ void main() {
 class MyExperienceApp extends StatelessWidget {
   const MyExperienceApp({super.key});
 
-  // This widget is the root of the application.
+  // The root of the application.
 
   @override
   Widget build(BuildContext context) {
@@ -63,15 +63,13 @@ class MyExperienceApp extends StatelessWidget {
     };
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'MyExperienceApp',
       theme: ThemeData(
-        // Theme for the application.
-
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
       home: home,
-      debugShowCheckedModeBanner: false,
     );
   }
 }
