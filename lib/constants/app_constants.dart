@@ -1,9 +1,9 @@
 /// Constants used throughout the application.
 ///
-/// Copyright (C) 2023,  Graham Williams
+/// Copyright (C) 2023, Graham Williams
 ///
 /// License: https://www.gnu.org/licenses/quick-guide-gplv3.html
-//
+///
 // This program is free software: you can redistribute it and/or modify it under
 // the terms of the GNU General Public License as published by the Free Software
 // Foundation, either version 3 of the License, or (at your option) any later
@@ -13,8 +13,12 @@
 // ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 // FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
 // details.
-//
+///
 /// Authors: Graham Williams
+
+/// Name of the app used for the root widget title.
+
+const String APP_NAME = 'MyExperienceApp';
 
 /// The application title as displayed in the desktop window title.
 
