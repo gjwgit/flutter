@@ -22,9 +22,12 @@ import 'package:flutter/foundation.dart'; // defaultTargetPlatform
 import 'package:window_size/window_size.dart'; // setWindowTitle()
 
 import 'package:experience/constants/app_constants.dart';
-import 'package:experience/presentation/pages/my_counter_page.dart';
-import 'package:experience/presentation/widgets/my_text_widget.dart';
-import 'package:experience/presentation/widgets/my_image_asset_widget.dart';
+import 'package:experience/pages/my_counter.dart';
+import 'package:experience/pages/my_button_grid.dart';
+import 'package:experience/pages/my_button_grid_builder.dart';
+import 'package:experience/pages/my_sliver_button_grid.dart';
+import 'package:experience/pages/my_text.dart';
+import 'package:experience/pages/my_image_asset.dart';
 
 /// The main() entry point.
 
@@ -54,16 +57,17 @@ class MyExperienceApp extends StatelessWidget {
     }
 
     // TODO The home page will be a grid of buttons to select the different
-    // experiments. For now randomly select an experiment to display.
+    // experiences. For now randomly select an experience to display.
 
     final choice = DateTime.now().millisecond % 10;
 
     print(choice);
 
     final home = switch (choice) {
-      0 => MyTextWidget(title: APP_TITLE),
-      1 => MyImageAssetWidget(image: APP_IMAGE),
-      _ => MyCounterPage(title: APP_TITLE)
+      0 => MyCounter(title: APP_TITLE),
+      3 => MyButtonGrid(),
+      4 => MySliverButtonGrid(title: APP_TITLE),
+      _ => MyButtonGridBuilder(title: APP_TITLE)
     };
 
     return MaterialApp(
