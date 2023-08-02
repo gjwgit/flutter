@@ -18,11 +18,11 @@
 
 import 'package:flutter/material.dart';
 
-class MyCounterPage extends StatefulWidget {
-  const MyCounterPage({super.key, required this.title});
+class MyCounter extends StatefulWidget {
+  const MyCounter({super.key, required this.title});
 
   // This widget is a sample home page for and application. It is stateful,
-  // meaning that it has a State object (defined below as [_MyCounterPageState])
+  // meaning that it has a State object (defined below as [_MyCounterState])
   // that contains fields that affect how it looks.
 
   // This class is the configuration for the state. It holds the values (in this
@@ -33,10 +33,10 @@ class MyCounterPage extends StatefulWidget {
   final String title;
 
   @override
-  State<MyCounterPage> createState() => _MyCounterPageState();
+  State<MyCounter> createState() => _MyCounterState();
 }
 
-class _MyCounterPageState extends State<MyCounterPage> {
+class _MyCounterState extends State<MyCounter> {
   int _counter = 0;
 
   void _incrementCounter() {
@@ -64,7 +64,7 @@ class _MyCounterPageState extends State<MyCounterPage> {
         // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
         // change color while the other colors stay the same.
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyCounterPage object that was created by
+        // Here we take the value from the MyCounter object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),

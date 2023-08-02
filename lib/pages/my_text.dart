@@ -1,4 +1,4 @@
-/// Demonstrate a single widget containing an image.
+/// Demonstrate a single page with a [Text] widget.
 ///
 /// Copyright (C) 2023, Graham Williams
 ///
@@ -17,22 +17,17 @@
 /// Authors: Graham Williams
 
 import 'package:flutter/material.dart';
-// import 'package:flutter/foundation.dart'; // defaultTargetPlatform
 
-// import 'package:window_size/window_size.dart'; // setWindowTitle()
-
-// import 'package:experience/constants/app_constants.dart';
-// import 'package:experience/presentation/widgets/my_text_widget.dart';
-
-class MyImageAssetWidget extends StatelessWidget {
-  const MyImageAssetWidget({super.key, required this.image});
-
-  final String image;
-
+class MyText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Image.asset(image),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Demonstrating a Text Widget"),
+      ),
+      body: Center(
+        child: Text("This is Text Center body of Scaffold."),
+      ),
     );
   }
 }

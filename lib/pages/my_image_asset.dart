@@ -1,4 +1,4 @@
-/// Demonstrate a single widget containing text.
+/// Demonstrate a single page with an [Image] asset.
 ///
 /// Copyright (C) 2023, Graham Williams
 ///
@@ -18,17 +18,20 @@
 
 import 'package:flutter/material.dart';
 
-class MyTextWidget extends StatelessWidget {
-  const MyTextWidget({super.key, required this.title});
+class MyImageAsset extends StatelessWidget {
+  const MyImageAsset({super.key, required this.image});
 
-  // Make `title` an instance field of this class.
-
-  final String title;
+  final String image;
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(title),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Demonstrating an Image Widget From The Assets Library"),
+      ),
+      body: Center(
+        child: Image.asset(image),
+      ),
     );
   }
 }
