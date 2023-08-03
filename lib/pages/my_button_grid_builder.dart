@@ -34,7 +34,8 @@ class MyButtonGridBuilder extends StatelessWidget {
   final List<Map<String, String>> pages = const [
     const {'title': 'Text', 'widget': 'MyText'},
     const {'title': 'Image', 'widget': 'MyImageAsset'},
-    const {'title': 'Page 3', 'widget': 'Widget3'},
+    const {'title': 'Counter', 'widget': 'MyCounter'},
+    const {'title': 'Random', 'widget': 'MyRandom'},
   ];
 
   @override
@@ -78,11 +79,26 @@ class MyButtonGridBuilder extends StatelessWidget {
 Widget _getPage(String widgetName) {
   switch (widgetName) {
     case 'MyText':
-      return MyText();
+      return MyText(title: "Demonstrating a Text Widget");
+
     case 'MyImageAsset':
       return MyImageAsset(image: APP_IMAGE);
-    case 'Widget3':
-      return MyOtherPage();
+
+    case 'MyCounter':
+      return MyCounter(title: "The Default Counter App");
+
+    case 'MyRandom':
+      final choice = DateTime.now().millisecond % 10;
+      print(choice);
+      switch (choice) {
+        case >= 0 && <= 3:
+          return MyCounter(title: APP_TITLE);
+        case >= 4 && <= 6:
+          return MyButtonGrid();
+        default:
+          return MySliverButtonGrid(title: APP_TITLE);
+      }
+      ;
     default:
       throw Exception('Invalid widget name');
   }
