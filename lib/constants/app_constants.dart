@@ -31,3 +31,8 @@ const String APP_TITLE = 'Learning Flutter Through Experience';
 /// A sample image to display.
 
 const String APP_IMAGE = 'assets/images/FrontPanel.png';
+
+/// A short duration used for a pause in testing so the user can see the app
+/// state whiling testing is in progress.
+
+const Duration testingShortDuration = Duration(seconds: 5);
