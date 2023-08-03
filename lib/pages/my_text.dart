@@ -18,12 +18,18 @@
 
 import 'package:flutter/material.dart';
 
+import 'package:experience/constants/app_constants.dart';
+
 class MyText extends StatelessWidget {
+  const MyText({super.key, this.title = APP_TITLE});
+
+  final String title;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Demonstrating a Text Widget"),
+        title: Text(title),
       ),
       body: Center(
         child: Text("This is Text Center body of Scaffold."),
