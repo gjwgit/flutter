@@ -56,20 +56,6 @@ class MyExperienceApp extends StatelessWidget {
       setWindowTitle(APP_WINDOW_TITLE);
     }
 
-    // TODO The home page will be a grid of buttons to select the different
-    // experiences. For now randomly select an experience to display.
-
-    final choice = DateTime.now().millisecond % 10;
-
-    print(choice);
-
-    final home = switch (choice) {
-      0 => MyCounter(title: APP_TITLE),
-      3 => MyButtonGrid(),
-      4 => MySliverButtonGrid(title: APP_TITLE),
-      _ => MyButtonGridBuilder(title: APP_TITLE)
-    };
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: APP_NAME,
@@ -77,7 +63,7 @@ class MyExperienceApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: home,
+      home: MyButtonGridBuilder(title: APP_TITLE),
     );
   }
 }
