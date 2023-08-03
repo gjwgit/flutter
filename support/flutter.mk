@@ -15,7 +15,7 @@ flutter:
   chrome  Run with the chrome device;
   emu	  Run with the android emulator;
   linux   Run with the linux device;
-  doc	  Run `dart doc` to crate documentation.
+  doc	  Run `dart doc` to create documentation.
   test	  Run `flutter test` for testing.
   itest	  Run `flutter test integration_test` for interation testing.
 
