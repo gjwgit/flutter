@@ -26,6 +26,9 @@ import 'package:experience/pages/my_sliver_button_grid.dart';
 import 'package:experience/pages/my_text.dart';
 import 'package:experience/pages/my_image_asset.dart';
 
+const NAV_SELECTED = Color(0xFFFF8F00);
+const NAV_UNSELECTED = Color(0xDF898884);
+
 //import 'package:experience/presentation/widgets/navigation_bar/navigation_bar.dart';
 //import 'package:experience/presentation/widgets/widget_option/widget_options.dart';
 
@@ -45,14 +48,21 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: pageSelector(context, (index) {
-          _selectedBottomNavIndex = index;
-        }).elementAt(_selectedBottomNavIndex),
+        child: pageSelector(
+          context,
+          (index) {
+            setState(() {
+              _selectedBottomNavIndex = index;
+            });
+          },
+        ).elementAt(_selectedBottomNavIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedBottomNavIndex,
         items: bottomNavigationBarItems,
-        //selectedItemColor: bottomNavigationSelectedColor,
+        selectedItemColor: NAV_SELECTED,
+        unselectedItemColor: NAV_UNSELECTED,
+        showUnselectedLabels: true,
         onTap: (int index) {
           setState(() {
             _selectedBottomNavIndex = index;
@@ -80,17 +90,17 @@ final List<BottomNavigationBarItem> bottomNavigationBarItems = [
     label: "Image",
   ),
   // When I add a fourth item to the navigation bar it greys all icons.
-  // const BottomNavigationBarItem(
-  //   icon: Icon(Icons.directions),
-  //   label: "Counter",
-  // ),
+  const BottomNavigationBarItem(
+    icon: Icon(Icons.directions),
+    label: "Counter",
+  ),
 ];
 
 List<Widget> pageSelector(BuildContext context, Function(int) onTap) {
   return [
-    MyButtonGridBuilder(title: APP_TITLE),
-    MyText(title: "Demonstrating a Text Widget"),
-    MyImageAsset(image: APP_IMAGE),
+    MyButtonGridBuilder(title: "A Button Grid"),
+    MyText(title: "A Text Widget"),
+    MyImageAsset(title: "An Image Widget", image: APP_IMAGE),
     MyCounter(),
   ];
 }
