@@ -19,15 +19,17 @@
 import 'package:flutter/material.dart';
 
 class MyImageAsset extends StatelessWidget {
-  const MyImageAsset({super.key, required this.image});
+  const MyImageAsset(
+      {super.key, this.title = "An Image Asset Widget", required this.image});
 
+  final String title;
   final String image;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Demonstrating an Image Widget From The Assets Library"),
+        title: Text(title),
       ),
       body: Center(
         child: Image.asset(image),
