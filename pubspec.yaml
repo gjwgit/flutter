@@ -55,6 +55,7 @@ dependencies:
       path: plugins/window_size
       ref: 6c66ad23ee79749f30a8eece542cf54eaf157ed8
 
+  window_manager: any
     
 dev_dependencies:
   integration_test:
@@ -72,6 +73,14 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   test: ^1.24.1
 
+  # For Android and iOS this can be used to set the app name.
+  
+  flutter_app_name: ^0.1.1
+
+flutter_app_name:
+  name: "Experience"
+  id: "com.togaware.experience"
+  
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

@@ -16,12 +16,15 @@
 ///
 /// Authors: Graham Williams
 
-import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart'; // defaultTargetPlatform
+import 'dart:io' show Platform;
 
-import 'package:window_size/window_size.dart'; // setWindowTitle()
+import 'package:flutter/material.dart';
+
+//import 'package:window_size/window_size.dart'; // setWindowTitle()
+import 'package:window_manager/window_manager.dart';
 
 import 'package:experience/constants/app_constants.dart';
+import 'package:experience/pages/my_home.dart';
 import 'package:experience/pages/my_counter.dart';
 import 'package:experience/pages/my_button_grid.dart';
 import 'package:experience/pages/my_button_grid_builder.dart';
@@ -31,7 +34,60 @@ import 'package:experience/pages/my_image_asset.dart';
 
 /// The main() entry point.
 
-void main() {
+void main() async {
+  // Handle Desktop and Mobile apps.
+
+  bool isDesktop = Platform.isLinux || Platform.isMacOS || Platform.isWindows;
+
+  // Perform the window manager tuning before the call to runApp so the user
+  // will not see a lag in the UI.
+
+  if (isDesktop) {
+    // To set things up for the windowManager from the window_manager package,
+    // in order to set the method call handler before the binary messenger has
+    // been initialized, as when you call setMethodCallHandler() before the
+    // WidgetsFlutterBinding has been initialized, or setWindowTitle() from the
+    // window_size package, we need to ensure the WidgetsFlutterBinding is
+    // initialized. MOVE THIS TO THE CHAPTER
+
+    WidgetsFlutterBinding.ensureInitialized();
+
+    await windowManager.ensureInitialized();
+
+    WindowOptions windowOptions = WindowOptions(
+      // It is not usually desirable to set alwaysOnTop but for testing when it
+      // might otherwise be hidden below other windows I force this to be the
+      // case. COMMENT ON THIS IN THE CHAPTER
+
+      alwaysOnTop: true,
+      size: Size(1280, 720),
+      title: APP_TITLE,
+
+      // Other options are available: PUT THIS INTO THE CHAPTER
+
+      // center: true,
+      // backgroundColor: Colors.transparent,
+      // skipTaskbar: false,
+      // titleBarStyle: TitleBarStyle.hidden,
+    );
+
+    windowManager.waitUntilReadyToShow(windowOptions, () async {
+      await windowManager.show();
+      await windowManager.focus();
+      // Turn this off now so it is not always on top, but is when the app
+      // starts. Must be a better approach but this works for now.
+      await windowManager.setAlwaysOnTop(false);
+    });
+  }
+
+  // An alternative way to just set the window title for the desktop apps
+  // approriately is this from the window_size package which is not available on
+  // pub.dev. REMOVE FROM HERE AND KEEP IN FLUTTER CHAPTER
+
+  // if (isDesktop) {
+  //   setWindowTitle(APP_WINDOW_TITLE);
+  // }
+
   runApp(const MyExperienceApp());
 }
 
@@ -44,18 +100,6 @@ class MyExperienceApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Set the window title for the desktop apps approriately.
-
-    const desktop = [
-      TargetPlatform.linux,
-      TargetPlatform.macOS,
-      TargetPlatform.windows
-    ];
-
-    if (desktop.contains(defaultTargetPlatform)) {
-      setWindowTitle(APP_WINDOW_TITLE);
-    }
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: APP_NAME,
@@ -63,7 +107,8 @@ class MyExperienceApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: MyButtonGridBuilder(title: APP_TITLE),
+      //home: MyButtonGridBuilder(title: APP_TITLE),
+      home: MyHomePage(),
     );
   }
 }
