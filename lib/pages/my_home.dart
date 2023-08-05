@@ -79,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
 final List<BottomNavigationBarItem> bottomNavigationBarItems = [
   const BottomNavigationBarItem(
     icon: Icon(Icons.home),
-    label: "Home",
+    label: "Buttons",
   ),
   const BottomNavigationBarItem(
     icon: Icon(Icons.format_align_justify_rounded),
