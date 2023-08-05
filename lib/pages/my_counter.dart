@@ -21,7 +21,7 @@ import 'package:flutter/material.dart';
 import 'package:experience/constants/app_constants.dart';
 
 class MyCounter extends StatefulWidget {
-  const MyCounter({super.key, this.title = APP_TITLE});
+  const MyCounter({super.key, this.title = "The Default Counter Widget"});
 
   // This widget is a sample home page for and application. It is stateful,
   // meaning that it has a State object (defined below as [_MyCounterState])
