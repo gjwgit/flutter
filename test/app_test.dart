@@ -30,7 +30,7 @@ void main() {
 
       final buttons = find.byType(ElevatedButton);
 
-      // Check the expected number of buttons.
+      // Check the expected number of buttons on the home page.
 
       expect(buttons, findsNWidgets(4));
     });
@@ -47,10 +47,11 @@ void main() {
       final button = find.byType(ElevatedButton).at(2);
       final text = find.text('Counter');
 
-      // Expect the button and text to be on the screen.
+      // Expect the button and text to be on the screen. There is a second Text
+      // widget in the navigation bar.
 
       expect(button, findsOneWidget);
-      expect(text, findsOneWidget);
+      expect(text, findsNWidgets(2));
 
       // Tap the button
 
@@ -58,19 +59,46 @@ void main() {
 
       await tester.pump(testingShortDuration);
 
-      // Testing the Counter App.
-
       // Verify that our counter starts at 0.
-      // expect(find.text('0'), findsOneWidget);
-      // expect(find.text('1'), findsNothing);
 
-      // // Tap the '+' icon and trigger a frame.
-      // await tester.tap(find.byIcon(Icons.add));
-      // await tester.pump();
+      expect(find.text('0'), findsOneWidget);
+      expect(find.text('1'), findsNothing);
 
-      // // Verify that our counter has incremented.
-      // expect(find.text('0'), findsNothing);
-      // expect(find.text('1'), findsOneWidget);
+      // Tap the '+' icon and trigger a frame.
+
+      await tester.tap(find.byIcon(Icons.add));
+      await tester.pump();
+
+      // Verify that our counter has incremented.
+
+      expect(find.text('0'), findsNothing);
+      expect(find.text('1'), findsOneWidget);
+
+      await tester.pump(testingShortDuration);
+
+      // Tap the '+' icon 4 more times.
+
+      await tester.tap(find.byIcon(Icons.add));
+      await tester.pump();
+      await tester.tap(find.byIcon(Icons.add));
+      await tester.pump();
+      await tester.tap(find.byIcon(Icons.add));
+      await tester.pump();
+      await tester.tap(find.byIcon(Icons.add));
+      await tester.pump();
+
+      // Verify that our counter has incremented.
+
+      expect(find.text('0'), findsNothing);
+      expect(find.text('5'), findsOneWidget);
+
+      await tester.pump(testingShortDuration);
+
+      // TODO Click the back arrow button to return home.
     });
+    // TODO Click the nav bar button to go to the Counter page
+
+    // TODO Click the nav bar button to go to the Text then Image then Home
+    // pages.
   });
 }

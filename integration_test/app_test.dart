@@ -30,7 +30,7 @@ void main() {
 
       final buttons = find.byType(ElevatedButton);
 
-      // Check the expected number of buttons.
+      // Check the expected number of buttons on the home page.
 
       expect(buttons, findsNWidgets(4));
     });
@@ -47,18 +47,17 @@ void main() {
       final button = find.byType(ElevatedButton).at(2);
       final text = find.text('Counter');
 
-      // Expect the button and text to be on the screen.
+      // Expect the button and text to be on the screen. There is a second Text
+      // widget in the navigation bar.
 
       expect(button, findsOneWidget);
-      expect(text, findsOneWidget);
+      expect(text, findsNWidgets(2));
 
       // Tap the button
 
       await tester.tap(button);
 
       await tester.pump(testingShortDuration);
-
-      // Testing the Counter App.
 
       // Verify that our counter starts at 0.
 
@@ -94,6 +93,12 @@ void main() {
       expect(find.text('5'), findsOneWidget);
 
       await tester.pump(testingShortDuration);
+
+      // TODO Click the back arrow button to return home.
     });
+    // TODO Click the nav bar button to go to the Counter page
+
+    // TODO Click the nav bar button to go to the Text then Image then Home
+    // pages.
   });
 }
