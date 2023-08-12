@@ -25,6 +25,7 @@ import 'package:experience/pages/my_button_grid_builder.dart';
 import 'package:experience/pages/my_sliver_button_grid.dart';
 import 'package:experience/pages/my_text.dart';
 import 'package:experience/pages/my_image_asset.dart';
+import 'package:experience/pages/wolt_modal.dart';
 
 const NAV_SELECTED = Color(0xFFFF8F00);
 const NAV_UNSELECTED = Color(0xDF898884);
@@ -89,10 +90,15 @@ final List<BottomNavigationBarItem> bottomNavigationBarItems = [
     icon: Icon(Icons.image),
     label: "Image",
   ),
-  // When I add a fourth item to the navigation bar it greys all icons.
+  // When I add a fourth item to the navigation bar it greys all icons. Had to
+  // specifically set the colour.
   const BottomNavigationBarItem(
     icon: Icon(Icons.directions),
     label: "Counter",
+  ),
+  const BottomNavigationBarItem(
+    icon: Icon(Icons.directions),
+    label: "WoltModal",
   ),
 ];
 
@@ -102,5 +108,6 @@ List<Widget> pageSelector(BuildContext context, Function(int) onTap) {
     MyText(title: "A Text Widget"),
     MyImageAsset(title: "An Image Widget", image: APP_IMAGE),
     MyCounter(),
+    WoltModal(),
   ];
 }

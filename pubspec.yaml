@@ -56,6 +56,7 @@ dependencies:
       ref: 6c66ad23ee79749f30a8eece542cf54eaf157ed8
 
   window_manager: any
+  wolt_modal_sheet: ^0.0.4
     
 dev_dependencies:
   integration_test:
@@ -101,6 +102,7 @@ flutter:
 
   assets:
     - assets/images/FrontPanel.png
+    - assets/images/material_colors_hero.png
     
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
