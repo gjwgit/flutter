@@ -18,14 +18,15 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:experience/constants/app_constants.dart';
+import 'package:experience/constants/app.dart';
+import 'package:experience/pages/app_lifecycle_buttons.dart';
 import 'package:experience/pages/my_counter.dart';
 import 'package:experience/pages/my_button_grid.dart';
 import 'package:experience/pages/my_button_grid_builder.dart';
 import 'package:experience/pages/my_sliver_button_grid.dart';
 import 'package:experience/pages/my_text.dart';
 import 'package:experience/pages/my_image_asset.dart';
-import 'package:experience/pages/wolt_modal.dart';
+import 'package:experience/wolt/wolt_buttons.dart';
 
 const NAV_SELECTED = Color(0xFFFF8F00);
 const NAV_UNSELECTED = Color(0xDF898884);
@@ -79,28 +80,54 @@ class _MyHomePageState extends State<MyHomePage> {
 
 final List<BottomNavigationBarItem> bottomNavigationBarItems = [
   const BottomNavigationBarItem(
-    icon: Icon(Icons.home),
+    icon: Icon(
+      Icons.home,
+      color: Colors.teal,
+      semanticLabel: 'Click to return to the home page.',
+    ),
     label: "Buttons",
   ),
   const BottomNavigationBarItem(
-    icon: Icon(Icons.format_align_justify_rounded),
+    icon: Icon(
+      Icons.format_align_justify_rounded,
+      color: Colors.red,
+    ),
     label: "Text",
   ),
   const BottomNavigationBarItem(
-    icon: Icon(Icons.image),
+    icon: Icon(
+      Icons.image,
+      color: Colors.purple,
+    ),
     label: "Image",
   ),
   // When I add a fourth item to the navigation bar it greys all icons. Had to
   // specifically set the colour.
   const BottomNavigationBarItem(
-    icon: Icon(Icons.directions),
+    icon: Icon(
+      Icons.directions,
+      color: Colors.blue,
+    ),
     label: "Counter",
   ),
   const BottomNavigationBarItem(
-    icon: Icon(Icons.directions),
-    label: "WoltModal",
+    icon: Icon(
+      Icons.directions,
+      color: Colors.pink,
+    ),
+    label: "Wolt",
+  ),
+  const BottomNavigationBarItem(
+    icon: Icon(
+      Icons.beach_access,
+      color: Colors.green,
+      size: 24,
+    ),
+    label: "State",
   ),
 ];
+
+/// List of pages to display as per the nav bar items.
 
 List<Widget> pageSelector(BuildContext context, Function(int) onTap) {
   return [
@@ -108,6 +135,7 @@ List<Widget> pageSelector(BuildContext context, Function(int) onTap) {
     MyText(title: "A Text Widget"),
     MyImageAsset(title: "An Image Widget", image: APP_IMAGE),
     MyCounter(),
-    WoltModal(),
+    WoltButtons(),
+    AppLifecycleButtons(),
   ];
 }
