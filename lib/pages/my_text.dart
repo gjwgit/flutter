@@ -18,7 +18,7 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:experience/constants/app_constants.dart';
+import 'package:experience/constants/app.dart';
 
 class MyText extends StatelessWidget {
   const MyText({super.key, this.title = APP_TITLE});
