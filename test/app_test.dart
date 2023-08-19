@@ -12,7 +12,7 @@ import 'package:integration_test/integration_test.dart';
 
 import 'package:experience/main.dart';
 // import 'package:experience/main.dart' as experience;
-import 'package:experience/constants/app_constants.dart';
+import 'package:experience/constants/app.dart';
 
 void main() {
   //  IntegrationTestWidgetsFlutterBinding.ensureInitialized();
