@@ -51,13 +51,22 @@ dependencies:
 
   window_size:
     git:
-      url: git://github.com/google/flutter-desktop-embedding.git
+      url: https://github.com/google/flutter-desktop-embedding.git
       path: plugins/window_size
       ref: 6c66ad23ee79749f30a8eece542cf54eaf157ed8
 
   window_manager: any
-  wolt_modal_sheet: ^0.0.4
-    
+
+  # The examples from github seem to be ahead of the released
+  # versions.
+  
+  # wolt_modal_sheet: ^0.0.4
+
+  wolt_modal_sheet:
+    git:
+      url: https://github.com/woltapp/wolt_modal_sheet.git
+      ref: b8fb7ae46621933fccc17d0e57ca9528a6f66d78
+      
 dev_dependencies:
   integration_test:
     sdk: flutter
