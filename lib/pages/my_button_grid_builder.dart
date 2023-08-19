@@ -18,13 +18,15 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:experience/constants/app_constants.dart';
+import 'package:experience/constants/app.dart';
+import 'package:experience/pages/app_lifecycle_buttons.dart';
 import 'package:experience/pages/my_counter.dart';
 import 'package:experience/pages/my_button_grid.dart';
 import 'package:experience/pages/my_button_grid_builder.dart';
 import 'package:experience/pages/my_sliver_button_grid.dart';
 import 'package:experience/pages/my_text.dart';
 import 'package:experience/pages/my_image_asset.dart';
+import 'package:experience/wolt/wolt_buttons.dart';
 
 class MyButtonGridBuilder extends StatelessWidget {
   const MyButtonGridBuilder({super.key, required this.title});
@@ -35,7 +37,9 @@ class MyButtonGridBuilder extends StatelessWidget {
     const {'title': 'Text', 'widget': 'MyText'},
     const {'title': 'Image', 'widget': 'MyImageAsset'},
     const {'title': 'Counter', 'widget': 'MyCounter'},
-    const {'title': 'Random', 'widget': 'MyRandom'},
+    const {'title': 'Wolt', 'widget': 'Wolt'},
+    const {'title': 'State', 'widget': 'AppLifecycleButtons'},
+    const {'title': 'Any', 'widget': 'MyRandom'},
   ];
 
   @override
@@ -87,6 +91,12 @@ Widget _getPage(String widgetName) {
     case 'MyCounter':
       return MyCounter(title: "The Default Counter App");
 
+    case 'Wolt':
+      return WoltButtons();
+
+    case 'AppLifecycleButtons':
+      return AppLifecycleButtons();
+
     case 'MyRandom':
       final choice = DateTime.now().millisecond % 10;
       print(choice);
@@ -95,6 +105,8 @@ Widget _getPage(String widgetName) {
           return MyCounter(title: APP_TITLE);
         case >= 4 && <= 6:
           return MyButtonGrid();
+        case >= 7 && <= 8:
+          return WoltButtons();
         default:
           return MySliverButtonGrid(title: APP_TITLE);
       }
